@@ -79,17 +79,19 @@
 
 
 
-<meta name="description" content="本文目录 前言 环境准备 hexo安装 github 更换主题 安装插件  前言hexo是真的好用啊！！！ 环境准备">
+<meta name="description" content="全局对象ECMAScript规定全区对象叫做global，但是浏览器把window作为全局对象（浏览器先存在）window就是一个哈希表，有很多属性，window的属性就是全局变量。 window下面的属性分为两类，第一类是ECMAScript规定必须有的函数，第二类是私有的（浏览器专有，标准不一）。 简单类型与对象1234567891011121314//全局函数//1.Numbervar n">
 <meta property="og:type" content="article">
-<meta property="og:title" content="瞎折腾 | 用hexo搭建个人博客">
-<meta property="og:url" content="https://pilotluobo.github.io/2018/10/27/用hexo搭建个人博客/index.html">
+<meta property="og:title" content="原型与原型链">
+<meta property="og:url" content="https://pilotluobo.github.io/2018/11/06/原型与原型链/index.html">
 <meta property="og:site_name" content="清与时光">
-<meta property="og:description" content="本文目录 前言 环境准备 hexo安装 github 更换主题 安装插件  前言hexo是真的好用啊！！！ 环境准备">
+<meta property="og:description" content="全局对象ECMAScript规定全区对象叫做global，但是浏览器把window作为全局对象（浏览器先存在）window就是一个哈希表，有很多属性，window的属性就是全局变量。 window下面的属性分为两类，第一类是ECMAScript规定必须有的函数，第二类是私有的（浏览器专有，标准不一）。 简单类型与对象1234567891011121314//全局函数//1.Numbervar n">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-29T03:28:11.000Z">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fwyrvgi971j31d80rvq6c.jpg">
+<meta property="og:updated_time" content="2018-11-06T15:49:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="瞎折腾 | 用hexo搭建个人博客">
-<meta name="twitter:description" content="本文目录 前言 环境准备 hexo安装 github 更换主题 安装插件  前言hexo是真的好用啊！！！ 环境准备">
+<meta name="twitter:title" content="原型与原型链">
+<meta name="twitter:description" content="全局对象ECMAScript规定全区对象叫做global，但是浏览器把window作为全局对象（浏览器先存在）window就是一个哈希表，有很多属性，window的属性就是全局变量。 window下面的属性分为两类，第一类是ECMAScript规定必须有的函数，第二类是私有的（浏览器专有，标准不一）。 简单类型与对象1234567891011121314//全局函数//1.Numbervar n">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fwyrvgi971j31d80rvq6c.jpg">
 
 
 
@@ -119,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="https://pilotluobo.github.io/2018/10/27/用hexo搭建个人博客/">
+  <link rel="canonical" href="https://pilotluobo.github.io/2018/11/06/原型与原型链/">
 
 
 
 
 
-  <title>瞎折腾 | 用hexo搭建个人博客 | 清与时光</title>
+  <title>原型与原型链 | 清与时光</title>
   
 
 
@@ -252,7 +254,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pilotluobo.github.io/2018/10/27/用hexo搭建个人博客/">
+    <link itemprop="mainEntityOfPage" href="https://pilotluobo.github.io/2018/11/06/原型与原型链/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="清与">
@@ -269,7 +271,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">瞎折腾 | 用hexo搭建个人博客</h1>
+          <h1 class="post-title" itemprop="name headline">原型与原型链</h1>
         
 
         <div class="post-meta">
@@ -281,8 +283,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-27T03:26:57+08:00">
-                2018-10-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-06T18:29:02+08:00">
+                2018-11-06
               </time>
             
 
@@ -297,8 +299,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-10-29T11:28:11+08:00">
-                2018-10-29
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-06T23:49:58+08:00">
+                2018-11-06
               </time>
             
           </span>
@@ -316,8 +318,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/瞎折腾/" itemprop="url" rel="index">
-                    <span itemprop="name">瞎折腾</span>
+                  <a href="/categories/前端学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">前端学习笔记</span>
                   </a>
                 </span>
 
@@ -353,16 +355,32 @@
       
 
       
-        <h2 id="本文目录"><a href="#本文目录" class="headerlink" title="本文目录"></a>本文目录</h2><ol>
-<li>前言</li>
-<li>环境准备</li>
-<li>hexo安装</li>
-<li>github</li>
-<li>更换主题</li>
-<li>安装插件</li>
-</ol>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>hexo是真的好用啊！！！</p>
-<h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2>
+        <h1 id="全局对象"><a href="#全局对象" class="headerlink" title="全局对象"></a>全局对象</h1><p>ECMAScript规定全区对象叫做global，但是浏览器把window作为全局对象（浏览器先存在）window就是一个哈希表，有很多属性，window的属性就是全局变量。<br> window下面的属性分为两类，第一类是ECMAScript规定必须有的函数，第二类是私有的（浏览器专有，标准不一）。</p>
+<h1 id="简单类型与对象"><a href="#简单类型与对象" class="headerlink" title="简单类型与对象"></a>简单类型与对象</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//全局函数</span></span><br><span class="line"><span class="comment">//1.Number</span></span><br><span class="line"><span class="keyword">var</span> n = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>)<span class="comment">//创建一个Number对象</span></span><br><span class="line"><span class="number">1</span>与<span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>)的区别是什么？看内存图</span><br><span class="line"><span class="comment">//2.String</span></span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello'</span>)<span class="comment">//创建一个Number对象</span></span><br><span class="line"><span class="string">'hello'</span>与<span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello'</span>)的区别是什么？看内存图</span><br><span class="line"><span class="comment">//3.boolean</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">true</span>)<span class="comment">//创建一个Number对象</span></span><br><span class="line"><span class="literal">true</span>与<span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">true</span>)的区别是什么？看内存图</span><br><span class="line"><span class="comment">//4.Object</span></span><br><span class="line"><span class="keyword">var</span> o1 = &#123;&#125;</span><br><span class="line"><span class="keyword">var</span> o2 = <span class="keyword">new</span> <span class="built_in">Object</span>()</span><br><span class="line">o1和o2没区别</span><br></pre></td></tr></table></figure>
+<p>简单数据类型和通过new 构造函数创建的数据对象(除了对象)区别在于内存地址不同,前者存放在stack中，而后者存放在heap里。</p>
+<p><strong>将数值通过<code>Number</code>包装成对象，内存里面就有许多操作该数值的方法。但简单数据也可以调用这些办法，那为什么还需要将数值包装成对象呢？</strong><br> 答：历史原因，在发明JS时模仿JAVA声明数据（<code>new</code>关键字，满足老板需求)，第二种可以直接声明<code>var a =1</code>。 由于第二种方法无法使用<code>toString</code>等方法（只有对象才能使用方法，简单数据类型不可以），创始人使用了一个妙计（临时转换）当写<code>n.toString</code>时，隐式的声明一个temp为 <code>new Number(n)</code>，然后再调用<code>n.toString的值为temp</code>，再销毁temp数据。临时的转换，用完就销毁了。所以给简单数据类型加属性读取时将会报错，这种方法受到了开发人员的欢迎。</p>
+<h1 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>所有的对象都有<code>toString</code>和<code>valueOf</code>属性，那么我们是否有必要给每个对象一个<code>toString</code>和<code>valueOf</code>呢？<br>明显不需要，JS的做法是把<code>toString</code>和<code>valueOf</code>放在一个对象里，暂且叫做公有属性组成的对象（原型）。</p>
+<p>通过构造函数为实例对象定义属性，虽然很方便，但是有一个缺点。同一个构造函数的多个实例之间，无法共享属性，从而造成对系统资源的浪费。<br> JavaScript 继承机制的设计思想就是，原型对象的所有属性和方法，都能被实例对象共享。也就是说，如果属性和方法定义在原型上，那么所有实例对象就能共享，不仅节省了内存，还体现了实例对象之间的联系。</p>
+<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>普通对象,有<code>____proto____</code>属性(指向其原型链)，没有prototype属性。<br>原型对象,构造函数.prototype原型对象还有constructor属性指向构造函数对象<br>函数对象，通过new Function()创建的都是函数对象。有<code>prototype</code>、<code>____proto____</code>属性(指向原型对象)</p>
+<h1 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h1><p>当我们打开浏览器时，浏览器进行初始化：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fwyrvgi971j31d80rvq6c.jpg" alt=""></p>
+<p>调用方法时，会经过一层一层的查找。<code>Number String Boolean Object</code>都有自己的共有属性，<code>____proto____</code>都是先指向了自己的共有属性，共有属性的<code>__proto____</code>再指向了对象。</p>
+<h1 id="proto-和-prototype的区别"><a href="#proto-和-prototype的区别" class="headerlink" title="_ proto_ 和 prototype的区别"></a>_ proto_ 和 prototype的区别</h1><p><strong>_ proto_是对象的属性；prototype是函数的属性</strong></p>
+<ul>
+<li><p>不能断章取义，_ proto_ 和 prototype只是两个key而已</p>
+</li>
+<li><p>我们一般研究对象的<strong> proto</strong>和函数的prototype</p>
+</li>
+<li><p>对象.<strong> proto</strong> === 某函数.prototype</p>
+</li>
+<li><p>如果把函数看成对象，那么函数.<strong> proto</strong> === Function.prototype</p>
+</li>
+<li><p>如果把 Function 看成对象，那么 Function.<strong> proto</strong> === Function.prototype</p>
+</li>
+<li><p>Function.prototype._ proto_ == Object.prototype</p>
+</li>
+</ul>
+
       
     </div>
     
@@ -382,7 +400,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://pilotluobo.github.io/2018/10/27/用hexo搭建个人博客/" title="瞎折腾 | 用hexo搭建个人博客">https://pilotluobo.github.io/2018/10/27/用hexo搭建个人博客/</a>
+    <a href="https://pilotluobo.github.io/2018/11/06/原型与原型链/" title="原型与原型链">https://pilotluobo.github.io/2018/11/06/原型与原型链/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -404,8 +422,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/08/造价软件环境/" rel="next" title="造价软件环境">
-                <i class="fa fa-chevron-left"></i> 造价软件环境
+              <a href="/2018/11/06/普通类型和对象的区别/" rel="next" title="普通类型和对象的区别">
+                <i class="fa fa-chevron-left"></i> 普通类型和对象的区别
               </a>
             
           </div>
@@ -413,10 +431,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/02/JS里的数据类型/" rel="prev" title="JS里的数据类型">
-                JS里的数据类型 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -546,7 +560,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#本文目录"><span class="nav-number">1.</span> <span class="nav-text">本文目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">2.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境准备"><span class="nav-number">3.</span> <span class="nav-text">环境准备</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#全局对象"><span class="nav-number">1.</span> <span class="nav-text">全局对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简单类型与对象"><span class="nav-number">2.</span> <span class="nav-text">简单类型与对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原型"><span class="nav-number">3.</span> <span class="nav-text">原型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">3.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用"><span class="nav-number">3.2.</span> <span class="nav-text">作用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原型链"><span class="nav-number">4.</span> <span class="nav-text">原型链</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proto-和-prototype的区别"><span class="nav-number">5.</span> <span class="nav-text">_ proto_ 和 prototype的区别</span></a></li></ol></div>
             
 
           </div>
