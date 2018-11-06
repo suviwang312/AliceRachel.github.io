@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="类型转换转化为number##转化为string 转化为boolean转化为symbol转化为null转化为undefined转化为object内存图概述垃圾回收浅拷贝与深拷贝">
+<meta name="description" content="类型转换String的转换toString()// 数值1.toString() // Invalid or unexpected token(1).toString() // &apos;1&apos;1..toString() // -&amp;gt; (1.).toString() -&amp;gt; &apos;1&apos;// 布尔true.toString() // &apos;true&apos;// 对象obj.toString() // [object">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS里的数据类型转换">
 <meta property="og:url" content="https://pilotluobo.github.io/2018/11/05/JS里的数据类型转换/index.html">
 <meta property="og:site_name" content="清与时光">
-<meta property="og:description" content="类型转换转化为number##转化为string 转化为boolean转化为symbol转化为null转化为undefined转化为object内存图概述垃圾回收浅拷贝与深拷贝">
+<meta property="og:description" content="类型转换String的转换toString()// 数值1.toString() // Invalid or unexpected token(1).toString() // &apos;1&apos;1..toString() // -&amp;gt; (1.).toString() -&amp;gt; &apos;1&apos;// 布尔true.toString() // &apos;true&apos;// 对象obj.toString() // [object">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-05T06:50:27.000Z">
+<meta property="og:updated_time" content="2018-11-06T06:50:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS里的数据类型转换">
-<meta name="twitter:description" content="类型转换转化为number##转化为string 转化为boolean转化为symbol转化为null转化为undefined转化为object内存图概述垃圾回收浅拷贝与深拷贝">
+<meta name="twitter:description" content="类型转换String的转换toString()// 数值1.toString() // Invalid or unexpected token(1).toString() // &apos;1&apos;1..toString() // -&amp;gt; (1.).toString() -&amp;gt; &apos;1&apos;// 布尔true.toString() // &apos;true&apos;// 对象obj.toString() // [object">
 
 
 
@@ -297,8 +297,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-05T14:50:27+08:00">
-                2018-11-05
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-06T14:50:26+08:00">
+                2018-11-06
               </time>
             
           </span>
@@ -353,8 +353,21 @@
       
 
       
-        <h1 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h1><h2 id="转化为number"><a href="#转化为number" class="headerlink" title="转化为number"></a>转化为number</h2><p>##转化为string</p>
-<h2 id="转化为boolean"><a href="#转化为boolean" class="headerlink" title="转化为boolean"></a>转化为boolean</h2><h2 id="转化为symbol"><a href="#转化为symbol" class="headerlink" title="转化为symbol"></a>转化为symbol</h2><h2 id="转化为null"><a href="#转化为null" class="headerlink" title="转化为null"></a>转化为null</h2><h2 id="转化为undefined"><a href="#转化为undefined" class="headerlink" title="转化为undefined"></a>转化为undefined</h2><h2 id="转化为object"><a href="#转化为object" class="headerlink" title="转化为object"></a>转化为object</h2><h1 id="内存图"><a href="#内存图" class="headerlink" title="内存图"></a>内存图</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h2 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h2><h2 id="浅拷贝与深拷贝"><a href="#浅拷贝与深拷贝" class="headerlink" title="浅拷贝与深拷贝"></a>浅拷贝与深拷贝</h2>
+        <h1 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h1><h2 id="String的转换"><a href="#String的转换" class="headerlink" title="String的转换"></a>String的转换</h2><h3 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString()"></a>toString()</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 数值</span></span><br><span class="line"><span class="number">1.</span>toString() <span class="comment">// Invalid or unexpected token</span></span><br><span class="line">(<span class="number">1</span>).toString() <span class="comment">// '1'</span></span><br><span class="line"><span class="number">1.</span>.toString() <span class="comment">// -&gt; (1.).toString() -&gt; '1'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 布尔</span></span><br><span class="line"><span class="literal">true</span>.toString() <span class="comment">// 'true'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 对象</span></span><br><span class="line">obj.toString() <span class="comment">// [object Object]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//null &amp; undefined</span></span><br><span class="line"><span class="literal">null</span>.toString() <span class="comment">// Cannot read property 'toString' of null</span></span><br><span class="line"><span class="literal">undefined</span>.toString() <span class="comment">// Cannot read property 'toString' of undefined</span></span><br></pre></td></tr></table></figure>
+<h3 id="加空字符串"><a href="#加空字符串" class="headerlink" title="加空字符串"></a>加空字符串</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> + <span class="string">''</span> <span class="comment">// '1'</span></span><br><span class="line"></span><br><span class="line"><span class="literal">true</span> + <span class="string">''</span> <span class="comment">// 'true'</span></span><br><span class="line"></span><br><span class="line">obj + <span class="string">''</span> <span class="comment">// [object Object]</span></span><br><span class="line"></span><br><span class="line"><span class="literal">null</span> + <span class="string">''</span> <span class="comment">// 'null'</span></span><br><span class="line"><span class="literal">undefined</span> + <span class="string">''</span> <span class="comment">// 'undefined'</span></span><br></pre></td></tr></table></figure>
+<h3 id="全局方法-String"><a href="#全局方法-String" class="headerlink" title="全局方法 String()"></a>全局方法 String()</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">String</span>(<span class="number">1</span>) <span class="comment">// '1'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">String</span>(<span class="literal">true</span>) <span class="comment">// 'true'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">String</span>(<span class="literal">null</span>) <span class="comment">// 'null'</span></span><br><span class="line"><span class="built_in">String</span>(<span class="literal">undefined</span>) <span class="comment">// 'undefined'</span></span><br></pre></td></tr></table></figure>
+<h2 id="boolean的转换"><a href="#boolean的转换" class="headerlink" title="boolean的转换"></a>boolean的转换</h2><h3 id="boolean"><a href="#boolean" class="headerlink" title="boolean()"></a>boolean()</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Boolean</span>(<span class="number">1</span>) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Boolean</span>(<span class="number">0</span>) <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Boolean</span>(<span class="string">''</span>) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Boolean</span>(<span class="string">' '</span>) <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Boolean</span>(<span class="literal">null</span>) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Boolean</span>(<span class="literal">undefined</span>) <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Boolean</span>(&#123;&#125;) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Boolean</span>(&#123;<span class="attr">name</span>: <span class="string">'ok'</span>&#125;) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h3 id="两次取反"><a href="#两次取反" class="headerlink" title="两次取反"></a>两次取反</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">!!<span class="number">1</span> <span class="comment">// true</span></span><br><span class="line">!!<span class="number">0</span> <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">!!&#123;&#125; <span class="comment">// true</span></span><br><span class="line">!!&#123;<span class="attr">name</span>: <span class="number">1</span>&#125; <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h3 id="五个-falsey-值"><a href="#五个-falsey-值" class="headerlink" title="五个 falsey 值"></a>五个 falsey 值</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">0</span></span><br><span class="line"><span class="literal">NaN</span></span><br><span class="line"><span class="string">''</span></span><br><span class="line"><span class="string">""</span></span><br><span class="line"><span class="literal">false</span></span><br><span class="line"><span class="literal">null</span></span><br><span class="line"><span class="literal">undefined</span></span><br></pre></td></tr></table></figure>
+<h2 id="number的转换"><a href="#number的转换" class="headerlink" title="number的转换"></a>number的转换</h2><h3 id="number"><a href="#number" class="headerlink" title="number()"></a>number()</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">number(<span class="string">'1'</span>) === <span class="number">1</span>    <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h3 id="parseInt"><a href="#parseInt" class="headerlink" title="parseInt()"></a>parseInt()</h3><p>parseInt(被解析的字符串, 被解析的数值的进制)。</p>
+<p>从头开始parse，能parse多少就parse多少，如果不能parse则返回 NaN。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">parseInt</span>(<span class="string">'1'</span>, <span class="number">10</span>) === <span class="number">1</span>    <span class="comment">//true</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">'11a'</span>) === <span class="number">11</span>    <span class="comment">//true</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">'a'</span>)    <span class="comment">//NaN</span></span><br></pre></td></tr></table></figure>
+<h3 id="parseFloat"><a href="#parseFloat" class="headerlink" title="parseFloat()"></a>parseFloat()</h3><p>解析为浮点数</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">parseFloat</span>(<span class="string">'1.23'</span>) === <span class="number">1.23</span>    <span class="comment">////true</span></span><br></pre></td></tr></table></figure>
+<h3 id="与数字相加"><a href="#与数字相加" class="headerlink" title="与数字相加"></a>与数字相加</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">'1'</span> + <span class="number">0</span> ==== <span class="number">1</span>     <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h3 id="取正"><a href="#取正" class="headerlink" title="取正"></a>取正</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">+ <span class="string">'1'</span> === <span class="number">1</span>    <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -405,6 +418,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/06/普通类型和对象的区别/" rel="prev" title="普通类型和对象的区别">
+                普通类型和对象的区别 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -488,7 +505,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -534,7 +551,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#类型转换"><span class="nav-number">1.</span> <span class="nav-text">类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#转化为number"><span class="nav-number">1.1.</span> <span class="nav-text">转化为number</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转化为boolean"><span class="nav-number">1.2.</span> <span class="nav-text">转化为boolean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转化为symbol"><span class="nav-number">1.3.</span> <span class="nav-text">转化为symbol</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转化为null"><span class="nav-number">1.4.</span> <span class="nav-text">转化为null</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转化为undefined"><span class="nav-number">1.5.</span> <span class="nav-text">转化为undefined</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转化为object"><span class="nav-number">1.6.</span> <span class="nav-text">转化为object</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存图"><span class="nav-number">2.</span> <span class="nav-text">内存图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">2.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾回收"><span class="nav-number">2.2.</span> <span class="nav-text">垃圾回收</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浅拷贝与深拷贝"><span class="nav-number">2.3.</span> <span class="nav-text">浅拷贝与深拷贝</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#类型转换"><span class="nav-number">1.</span> <span class="nav-text">类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#String的转换"><span class="nav-number">1.1.</span> <span class="nav-text">String的转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#toString-NaN"><span class="nav-number">1.1.1.</span> <span class="nav-text">toString()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加空字符串"><span class="nav-number">1.1.2.</span> <span class="nav-text">加空字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局方法-String"><span class="nav-number">1.1.3.</span> <span class="nav-text">全局方法 String()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#boolean的转换"><span class="nav-number">1.2.</span> <span class="nav-text">boolean的转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#boolean"><span class="nav-number">1.2.1.</span> <span class="nav-text">boolean()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两次取反"><span class="nav-number">1.2.2.</span> <span class="nav-text">两次取反</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五个-falsey-值"><span class="nav-number">1.2.3.</span> <span class="nav-text">五个 falsey 值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#number的转换"><span class="nav-number">1.3.</span> <span class="nav-text">number的转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#number"><span class="nav-number">1.3.1.</span> <span class="nav-text">number()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parseInt"><span class="nav-number">1.3.2.</span> <span class="nav-text">parseInt()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parseFloat"><span class="nav-number">1.3.3.</span> <span class="nav-text">parseFloat()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与数字相加"><span class="nav-number">1.3.4.</span> <span class="nav-text">与数字相加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#取正"><span class="nav-number">1.3.5.</span> <span class="nav-text">取正</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
