@@ -86,16 +86,12 @@
 <meta property="og:site_name" content="清与时光">
 <meta property="og:description" content="JS中的数据在内存中的存储方式 JS 引擎将内存分为代码区和数据区， 我们只研究数据区。 数据区分为 Stack（栈内存）和 Heap（堆内存）。 简单类型的数据（如Number，string等）直接存在 Stack 里， 复杂类型的数据（object对象）是把 Heap 地址存在 Stack 里。  内存图垃圾回收JS中的垃圾回收机制：如果一个对象没有被引用，它就是垃圾，将会被回收。 内存泄漏：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://pilotluobo.github.io/Users/luobo/OneDrive/4------学习/myblog/source/_posts/普通类型和对象的区别/11616333-8c2b53ce1586f43e.png">
-<meta property="og:image" content="https://pilotluobo.github.io/Users/luobo/Downloads/11616333-f759ff8f3fe64df9%20(1">
-<meta property="og:image" content="https://pilotluobo.github.io/Users/luobo/Library/Application%20Support/typora-user-images/image-20181106164922939.png">
-<meta property="og:image" content="https://pilotluobo.github.io/Users/luobo/Library/Application%20Support/typora-user-images/image-20181106165028561.png">
-<meta property="og:image" content="https://pilotluobo.github.io/Users/luobo/Library/Application%20Support/typora-user-images/image-20181106170157630.png">
-<meta property="og:updated_time" content="2018-11-06T09:05:01.000Z">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fwygsiyho2j30kk06ct9j.jpg">
+<meta property="og:updated_time" content="2018-11-06T09:32:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="普通类型和对象的区别">
 <meta name="twitter:description" content="JS中的数据在内存中的存储方式 JS 引擎将内存分为代码区和数据区， 我们只研究数据区。 数据区分为 Stack（栈内存）和 Heap（堆内存）。 简单类型的数据（如Number，string等）直接存在 Stack 里， 复杂类型的数据（object对象）是把 Heap 地址存在 Stack 里。  内存图垃圾回收JS中的垃圾回收机制：如果一个对象没有被引用，它就是垃圾，将会被回收。 内存泄漏：">
-<meta name="twitter:image" content="https://pilotluobo.github.io/Users/luobo/OneDrive/4------学习/myblog/source/_posts/普通类型和对象的区别/11616333-8c2b53ce1586f43e.png">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fwygsiyho2j30kk06ct9j.jpg">
 
 
 
@@ -303,7 +299,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-06T17:05:01+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-06T17:32:46+08:00">
                 2018-11-06
               </time>
             
@@ -368,21 +364,23 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.onunload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">//需要将所有的事件监听为null，十分麻烦</span></span><br><span class="line">  <span class="built_in">document</span>.body.onclick = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="四个关于内存的题目"><a href="#四个关于内存的题目" class="headerlink" title="四个关于内存的题目"></a>四个关于内存的题目</h1><h2 id="题目一"><a href="#题目一" class="headerlink" title="题目一"></a>题目一</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line">b =<span class="number">2</span>;</span><br><span class="line"><span class="comment">//Q: a 是什么？   </span></span><br><span class="line"><span class="comment">//A: a === 1</span></span><br></pre></td></tr></table></figure>
 <p>图解：</p>
-<p><img src="/Users/luobo/OneDrive/4------学习/myblog/source/_posts/普通类型和对象的区别/11616333-8c2b53ce1586f43e.png" alt="11616333-8c2b53ce1586f43e"></p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fwygsiyho2j30kk06ct9j.jpg" alt=""></p>
 <h2 id="题目二"><a href="#题目二" class="headerlink" title="题目二"></a>题目二</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">name</span>:<span class="string">'a'</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line">b = &#123;<span class="attr">name</span>: <span class="string">'b'</span>&#125;;</span><br><span class="line"><span class="comment">//Q: a.name 是什么？  </span></span><br><span class="line"><span class="comment">//A: a.name === "a"</span></span><br></pre></td></tr></table></figure>
 <p>图解：</p>
-<p><img src="/Users/luobo/Downloads/11616333-f759ff8f3fe64df9 (1" alt="11616333-f759ff8f3fe64df9 (1)">.png)</p>
 <h2 id="题目三"><a href="#题目三" class="headerlink" title="题目三"></a>题目三</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">name</span>: <span class="string">'a'</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line">b.name = <span class="string">'b'</span>；</span><br><span class="line"><span class="comment">//Q: a.name 是什么？  </span></span><br><span class="line"><span class="comment">//A: a.name === "b"</span></span><br></pre></td></tr></table></figure>
 <p>图解：</p>
-<p><img src="/Users/luobo/Library/Application Support/typora-user-images/image-20181106164922939.png" alt="image-20181106164922939"></p>
 <h2 id="题目四"><a href="#题目四" class="headerlink" title="题目四"></a>题目四</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">name</span>:<span class="string">'a'</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line">b = <span class="literal">null</span>;</span><br><span class="line"><span class="comment">//Q: a是什么？  </span></span><br><span class="line"><span class="comment">//A: a === &#123;name: 'a'&#125;</span></span><br></pre></td></tr></table></figure>
 <p>图解：</p>
-<p><img src="/Users/luobo/Library/Application Support/typora-user-images/image-20181106165028561.png" alt="image-20181106165028561"></p>
 <h1 id="一个面试题"><a href="#一个面试题" class="headerlink" title="一个面试题"></a>一个面试题</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">n</span>:<span class="number">1</span>&#125;;  </span><br><span class="line"><span class="keyword">var</span> b = a; </span><br><span class="line">a.x = a = &#123;<span class="attr">n</span>:<span class="number">2</span>&#125;;  </span><br><span class="line">alert(a.x);    <span class="comment">// --&gt; undefined</span></span><br><span class="line">alert(b.x);    <span class="comment">// --&gt; [object Object]</span></span><br></pre></td></tr></table></figure>
 <p>浏览器读到<code>a.x = a = {n:2};</code>这句话时，先看左面，再往右边看，流程如下</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">a.x = a = &#123;<span class="attr">n</span>:<span class="number">2</span>&#125;</span><br><span class="line"><span class="comment">//a = &#123;n:2&#125;,此时 a 指向了新的地址</span></span><br><span class="line"><span class="comment">//a.x = a,此时 a 还是之前的地址，并没有发生改变</span></span><br></pre></td></tr></table></figure>
 <p>图解：</p>
-<p><img src="/Users/luobo/Library/Application Support/typora-user-images/image-20181106170157630.png" alt="image-20181106170157630"></p>
+<h1 id="浅拷贝-amp-深拷贝"><a href="#浅拷贝-amp-深拷贝" class="headerlink" title="浅拷贝 &amp; 深拷贝"></a>浅拷贝 &amp; 深拷贝</h1><p>##浅拷贝</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var a = &#123;x:1&#125; ;</span><br><span class="line">var b = a ;</span><br><span class="line">b.x = 2;</span><br></pre></td></tr></table></figure>
+<p><strong>b 变而导致 a变</strong>，就叫浅拷贝。</p>
+<p>##深拷贝</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var a = 1;</span><br><span class="line">var b = a;</span><br><span class="line">b = 2 ;</span><br><span class="line">//请问a是什么？</span><br></pre></td></tr></table></figure>
+<p>a的值仍然还是1。<br>即 <strong>b 变而不影响 a</strong>，就叫深拷贝（简单数据类型的赋值都是深拷贝）。</p>
 
       
     </div>
@@ -563,7 +561,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS中的数据在内存中的存储方式"><span class="nav-number">1.</span> <span class="nav-text">JS中的数据在内存中的存储方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存图"><span class="nav-number">2.</span> <span class="nav-text">内存图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#垃圾回收"><span class="nav-number">3.</span> <span class="nav-text">垃圾回收</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四个关于内存的题目"><span class="nav-number">4.</span> <span class="nav-text">四个关于内存的题目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目一"><span class="nav-number">4.1.</span> <span class="nav-text">题目一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目二"><span class="nav-number">4.2.</span> <span class="nav-text">题目二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目三"><span class="nav-number">4.3.</span> <span class="nav-text">题目三</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目四"><span class="nav-number">4.4.</span> <span class="nav-text">题目四</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一个面试题"><span class="nav-number">5.</span> <span class="nav-text">一个面试题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS中的数据在内存中的存储方式"><span class="nav-number">1.</span> <span class="nav-text">JS中的数据在内存中的存储方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存图"><span class="nav-number">2.</span> <span class="nav-text">内存图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#垃圾回收"><span class="nav-number">3.</span> <span class="nav-text">垃圾回收</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四个关于内存的题目"><span class="nav-number">4.</span> <span class="nav-text">四个关于内存的题目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目一"><span class="nav-number">4.1.</span> <span class="nav-text">题目一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目二"><span class="nav-number">4.2.</span> <span class="nav-text">题目二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目三"><span class="nav-number">4.3.</span> <span class="nav-text">题目三</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目四"><span class="nav-number">4.4.</span> <span class="nav-text">题目四</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一个面试题"><span class="nav-number">5.</span> <span class="nav-text">一个面试题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#浅拷贝-amp-深拷贝"><span class="nav-number">6.</span> <span class="nav-text">浅拷贝 &amp; 深拷贝</span></a></li></ol></div>
             
 
           </div>
