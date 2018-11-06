@@ -86,10 +86,12 @@
 <meta property="og:site_name" content="清与时光">
 <meta property="og:description" content="JS中的数据在内存中的存储方式 JS 引擎将内存分为代码区和数据区， 我们只研究数据区。 数据区分为 Stack（栈内存）和 Heap（堆内存）。 简单类型的数据（如Number，string等）直接存在 Stack 里， 复杂类型的数据（object对象）是把 Heap 地址存在 Stack 里。  内存图垃圾回收JS中的垃圾回收机制：如果一个对象没有被引用，它就是垃圾，将会被回收。 内存泄漏：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-06T08:24:01.000Z">
+<meta property="og:image" content="https://pilotluobo.github.io/Users/luobo/OneDrive/4------学习/myblog/source/_posts/普通类型和对象的区别/11616333-8c2b53ce1586f43e.webp">
+<meta property="og:updated_time" content="2018-11-06T08:29:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="普通类型和对象的区别">
 <meta name="twitter:description" content="JS中的数据在内存中的存储方式 JS 引擎将内存分为代码区和数据区， 我们只研究数据区。 数据区分为 Stack（栈内存）和 Heap（堆内存）。 简单类型的数据（如Number，string等）直接存在 Stack 里， 复杂类型的数据（object对象）是把 Heap 地址存在 Stack 里。  内存图垃圾回收JS中的垃圾回收机制：如果一个对象没有被引用，它就是垃圾，将会被回收。 内存泄漏：">
+<meta name="twitter:image" content="https://pilotluobo.github.io/Users/luobo/OneDrive/4------学习/myblog/source/_posts/普通类型和对象的区别/11616333-8c2b53ce1586f43e.webp">
 
 
 
@@ -297,7 +299,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-06T16:24:01+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-06T16:29:38+08:00">
                 2018-11-06
               </time>
             
@@ -360,7 +362,11 @@
 <p>内存泄漏：由于某些浏览器 ( 如 IE 6 ) 的一些bug，使得本应被被标记为垃圾的数据没有被标记，而这些垃圾数据占用的内存将永远被占用，哪怕你把当前页面关掉都不会被释放，除非直接关掉整个浏览器。</p>
 <p>解决方法：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.onunload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">//需要将所有的事件监听为null，十分麻烦</span></span><br><span class="line">  <span class="built_in">document</span>.body.onclick = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="四个关于内存的题目"><a href="#四个关于内存的题目" class="headerlink" title="四个关于内存的题目"></a>四个关于内存的题目</h1><h3 id="题目一"><a href="#题目一" class="headerlink" title="题目一"></a>题目一</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line">b =<span class="number">2</span>;</span><br><span class="line"><span class="comment">//请问 a 是什么？   </span></span><br><span class="line"><span class="comment">//a =</span></span><br></pre></td></tr></table></figure>
+<h1 id="四个关于内存的题目"><a href="#四个关于内存的题目" class="headerlink" title="四个关于内存的题目"></a>四个关于内存的题目</h1><h3 id="题目一"><a href="#题目一" class="headerlink" title="题目一"></a>题目一</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line">b =<span class="number">2</span>;</span><br><span class="line"><span class="comment">//Q: a 是什么？   </span></span><br><span class="line"><span class="comment">//A: a === 1</span></span><br></pre></td></tr></table></figure>
+<p>图解：</p>
+<p><img src="/Users/luobo/OneDrive/4------学习/myblog/source/_posts/普通类型和对象的区别/11616333-8c2b53ce1586f43e.webp" alt="11616333-8c2b53ce1586f43e"></p>
+<h3 id="题目二"><a href="#题目二" class="headerlink" title="题目二"></a>题目二</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">name</span>:<span class="string">'a'</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line">b = &#123;<span class="attr">name</span>: <span class="string">'b'</span>&#125;;</span><br><span class="line"><span class="comment">//Q: a.name 是什么？  </span></span><br><span class="line"><span class="comment">//A: a.name === "a"</span></span><br></pre></td></tr></table></figure>
+<p>图解：</p>
 
       
     </div>
@@ -541,7 +547,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS中的数据在内存中的存储方式"><span class="nav-number">1.</span> <span class="nav-text">JS中的数据在内存中的存储方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存图"><span class="nav-number">2.</span> <span class="nav-text">内存图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#垃圾回收"><span class="nav-number">3.</span> <span class="nav-text">垃圾回收</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四个关于内存的题目"><span class="nav-number">4.</span> <span class="nav-text">四个关于内存的题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目一"><span class="nav-number">4.0.1.</span> <span class="nav-text">题目一</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS中的数据在内存中的存储方式"><span class="nav-number">1.</span> <span class="nav-text">JS中的数据在内存中的存储方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存图"><span class="nav-number">2.</span> <span class="nav-text">内存图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#垃圾回收"><span class="nav-number">3.</span> <span class="nav-text">垃圾回收</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四个关于内存的题目"><span class="nav-number">4.</span> <span class="nav-text">四个关于内存的题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目一"><span class="nav-number">4.0.1.</span> <span class="nav-text">题目一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目二"><span class="nav-number">4.0.2.</span> <span class="nav-text">题目二</span></a></li></ol></li></ol></div>
             
 
           </div>
