@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/noun_Cat_64517.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/noun_Cat_64517.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/noun_Cat_64517.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="全局对象ECMAScript规定全区对象叫做global，但是浏览器把window作为全局对象（浏览器先存在）window就是一个哈希表，有很多属性，window的属性就是全局变量。 window下面的属性分为两类，第一类是ECMAScript规定必须有的函数，第二类是私有的（浏览器专有，标准不一）。 简单类型与对象1234567891011121314//全局函数//1.Numbervar n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="原型与原型链">
+<meta property="og:url" content="https://pilotluobo.github.io/2018/11/06/20181109原型与原型链/index.html">
+<meta property="og:site_name" content="清与时光">
+<meta property="og:description" content="全局对象ECMAScript规定全区对象叫做global，但是浏览器把window作为全局对象（浏览器先存在）window就是一个哈希表，有很多属性，window的属性就是全局变量。 window下面的属性分为两类，第一类是ECMAScript规定必须有的函数，第二类是私有的（浏览器专有，标准不一）。 简单类型与对象1234567891011121314//全局函数//1.Numbervar n">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fwyrvgi971j31d80rvq6c.jpg">
+<meta property="og:updated_time" content="2018-11-09T04:02:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="原型与原型链">
+<meta name="twitter:description" content="全局对象ECMAScript规定全区对象叫做global，但是浏览器把window作为全局对象（浏览器先存在）window就是一个哈希表，有很多属性，window的属性就是全局变量。 window下面的属性分为两类，第一类是ECMAScript规定必须有的函数，第二类是私有的（浏览器专有，标准不一）。 简单类型与对象1234567891011121314//全局函数//1.Numbervar n">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fwyrvgi971j31d80rvq6c.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://pilotluobo.github.io/2018/11/06/20181109原型与原型链/">
+
+
+
+
+
+  <title>原型与原型链 | 清与时光</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">清与时光</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">无人一隅，记录……</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            时间轴
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-前端之路">
+          <a href="/categories/前端之路/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br>
+            
+            前端之路
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-工程造价师的自我修养">
+          <a href="/categories/工程造价师的自我修养/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-building"></i> <br>
+            
+            工程造价师的自我修养
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-瞎折腾">
+          <a href="/categories/瞎折腾/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br>
+            
+            瞎折腾
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-我的书单">
+          <a href="/books/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br>
+            
+            我的书单
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pilotluobo.github.io/2018/11/06/20181109原型与原型链/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="清与">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/noun_Cat_64517.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="清与时光">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">原型与原型链</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-06T18:29:02+08:00">
+                2018-11-06
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-09T12:02:42+08:00">
+                2018-11-09
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端之路/" itemprop="url" rel="index">
+                    <span itemprop="name">前端之路</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="全局对象"><a href="#全局对象" class="headerlink" title="全局对象"></a>全局对象</h1><p>ECMAScript规定全区对象叫做global，但是浏览器把window作为全局对象（浏览器先存在）window就是一个哈希表，有很多属性，window的属性就是全局变量。<br> window下面的属性分为两类，第一类是ECMAScript规定必须有的函数，第二类是私有的（浏览器专有，标准不一）。</p>
+<h1 id="简单类型与对象"><a href="#简单类型与对象" class="headerlink" title="简单类型与对象"></a>简单类型与对象</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//全局函数</span></span><br><span class="line"><span class="comment">//1.Number</span></span><br><span class="line"><span class="keyword">var</span> n = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>)<span class="comment">//创建一个Number对象</span></span><br><span class="line"><span class="number">1</span>与<span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>)的区别是什么？看内存图</span><br><span class="line"><span class="comment">//2.String</span></span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello'</span>)<span class="comment">//创建一个Number对象</span></span><br><span class="line"><span class="string">'hello'</span>与<span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello'</span>)的区别是什么？看内存图</span><br><span class="line"><span class="comment">//3.boolean</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">true</span>)<span class="comment">//创建一个Number对象</span></span><br><span class="line"><span class="literal">true</span>与<span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">true</span>)的区别是什么？看内存图</span><br><span class="line"><span class="comment">//4.Object</span></span><br><span class="line"><span class="keyword">var</span> o1 = &#123;&#125;</span><br><span class="line"><span class="keyword">var</span> o2 = <span class="keyword">new</span> <span class="built_in">Object</span>()</span><br><span class="line">o1和o2没区别</span><br></pre></td></tr></table></figure>
+<p>简单数据类型和通过new 构造函数创建的数据对象(除了对象)区别在于内存地址不同,前者存放在stack中，而后者存放在heap里。</p>
+<p><strong>将数值通过<code>Number</code>包装成对象，内存里面就有许多操作该数值的方法。但简单数据也可以调用这些办法，那为什么还需要将数值包装成对象呢？</strong><br> 答：历史原因，在发明JS时模仿JAVA声明数据（<code>new</code>关键字，满足老板需求)，第二种可以直接声明<code>var a =1</code>。 由于第二种方法无法使用<code>toString</code>等方法（只有对象才能使用方法，简单数据类型不可以），创始人使用了一个妙计（临时转换）当写<code>n.toString</code>时，隐式的声明一个temp为 <code>new Number(n)</code>，然后再调用<code>n.toString的值为temp</code>，再销毁temp数据。临时的转换，用完就销毁了。所以给简单数据类型加属性读取时将会报错，这种方法受到了开发人员的欢迎。</p>
+<h1 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>所有的对象都有<code>toString</code>和<code>valueOf</code>属性，那么我们是否有必要给每个对象一个<code>toString</code>和<code>valueOf</code>呢？<br>明显不需要，JS的做法是把<code>toString</code>和<code>valueOf</code>放在一个对象里，暂且叫做公有属性组成的对象（原型）。</p>
+<p>通过构造函数为实例对象定义属性，虽然很方便，但是有一个缺点。同一个构造函数的多个实例之间，无法共享属性，从而造成对系统资源的浪费。<br> JavaScript 继承机制的设计思想就是，原型对象的所有属性和方法，都能被实例对象共享。也就是说，如果属性和方法定义在原型上，那么所有实例对象就能共享，不仅节省了内存，还体现了实例对象之间的联系。</p>
+<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>普通对象,有<code>____proto____</code>属性(指向其原型链)，没有prototype属性。<br>原型对象,构造函数.prototype原型对象还有constructor属性指向构造函数对象<br>函数对象，通过new Function()创建的都是函数对象。有<code>prototype</code>、<code>____proto____</code>属性(指向原型对象)</p>
+<h1 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h1><p>当我们打开浏览器时，浏览器进行初始化：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fwyrvgi971j31d80rvq6c.jpg" alt=""></p>
+<p>调用方法时，会经过一层一层的查找。<code>Number String Boolean Object</code>都有自己的共有属性，<code>____proto____</code>都是先指向了自己的共有属性，共有属性的<code>__proto____</code>再指向了对象。</p>
+<h1 id="proto-和-prototype的区别"><a href="#proto-和-prototype的区别" class="headerlink" title="_ proto_ 和 prototype的区别"></a>_ proto_ 和 prototype的区别</h1><p><strong>_ proto_是对象的属性；prototype是函数的属性</strong></p>
+<ul>
+<li><p>不能断章取义，_ proto_ 和 prototype只是两个key而已</p>
+</li>
+<li><p>我们一般研究对象的<strong> proto</strong>和函数的prototype</p>
+</li>
+<li><p>对象.<strong> proto</strong> === 某函数.prototype</p>
+</li>
+<li><p>如果把函数看成对象，那么函数.<strong> proto</strong> === Function.prototype</p>
+</li>
+<li><p>如果把 Function 看成对象，那么 Function.<strong> proto</strong> === Function.prototype</p>
+</li>
+<li><p>Function.prototype._ proto_ == Object.prototype</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    清与
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://pilotluobo.github.io/2018/11/06/20181109原型与原型链/" title="原型与原型链">https://pilotluobo.github.io/2018/11/06/20181109原型与原型链/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/06/20181106普通类型和对象的区别/" rel="next" title="普通类型和对象的区别">
+                <i class="fa fa-chevron-left"></i> 普通类型和对象的区别
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/11/20181111AMD-RYZEN-1700-GTX-1070-安装MACOS-10-13-3/" rel="prev" title="AMD RYZEN 1700 + GTX 1070 安装MACOS 10.13.3">
+                AMD RYZEN 1700 + GTX 1070 安装MACOS 10.13.3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MDYxNS8xNzE0Mg=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/noun_Cat_64517.png" alt="清与">
+            
+              <p class="site-author-name" itemprop="name">清与</p>
+              <p class="site-description motion-element" itemprop="description">一个小小的前端工程师</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#全局对象"><span class="nav-number">1.</span> <span class="nav-text">全局对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简单类型与对象"><span class="nav-number">2.</span> <span class="nav-text">简单类型与对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原型"><span class="nav-number">3.</span> <span class="nav-text">原型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">3.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用"><span class="nav-number">3.2.</span> <span class="nav-text">作用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原型链"><span class="nav-number">4.</span> <span class="nav-text">原型链</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proto-和-prototype的区别"><span class="nav-number">5.</span> <span class="nav-text">_ proto_ 和 prototype的区别</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">清与</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
