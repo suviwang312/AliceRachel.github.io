@@ -159,6 +159,93 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-php学习" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/18/php学习/">php学习</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/18/php学习/" class="archive-article-date">
+  	<time datetime="2018-11-18T02:47:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>2018-09-27<br><br><br><strong>上课练习</strong><br>所写内容都在&lt;?php</p>
+<p>?&gt;<br>定义一个变量，保存自己的名字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$name = &quot;alice&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>打印我的名字是XXX,XXX用上面的变量替代</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$name = &quot;alice&quot;;</span><br><span class="line">echo &quot;我的名字是$name&quot;</span><br></pre></td></tr></table></figure>
+<p>定义一个常量，用来保存我们学校的名字并输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">define(&quot;SCHOOL&quot;,&quot;大连东软信息学院&quot;);</span><br><span class="line">echo SCHOOL;</span><br></pre></td></tr></table></figure>
+<p>定义一个变量，保存自己的年龄，使用三目运算符，判断如果年龄大于18岁，输出青年，反之输出少年。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$y=20;</span><br><span class="line">echo $y&gt;18?&quot;青年&quot;:&quot;少年&quot;;</span><br></pre></td></tr></table></figure>
+<p>运算<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$z=19;</span><br><span class="line">echo $z++||++$z;//1</span><br><span class="line">echo &quot;&lt;br&gt;&quot;;</span><br><span class="line">echo $z++|++$z;//22</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">写法意义相同</span><br><span class="line">echo $t. &quot;今天来上课了&quot;;</span><br><span class="line">echo &quot;&#123;$t&#125;今天来上课了&quot;;</span><br><span class="line">echo &quot;$&#123;t&#125;今天来上课了&quot;;</span><br></pre></td></tr></table></figure>
+<p><strong>语句</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">//打印100个数</span><br><span class="line">for($i=1;$i&lt;=100;$i++)&#123;</span><br><span class="line">echo $i;</span><br><span class="line">echo &quot;&amp;nbsp;&amp;nbsp;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://img-blog.csdn.net/20180926225348660?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTA1NjgwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdn.net/2018092622541911?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTA1NjgwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdn.net/20180926225432776?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTA1NjgwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">//打印100个数</span><br><span class="line">$i=1;</span><br><span class="line">while($i&lt;=100)&#123;</span><br><span class="line">echo $i;</span><br><span class="line">if($I%10==0) echo &quot;&lt;br&gt;&quot;;</span><br><span class="line">echo &quot;&amp;nbsp;&amp;nbsp;&quot;;</span><br><span class="line">$i++;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdn.net/2018092623041947?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTA1NjgwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">if(isset($_GET[&quot;age&quot;]))</span><br><span class="line">//$age =30;</span><br><span class="line">$age=$_GET[&quot;age&quot;];//服务器传参http://localhost/test/20180926.php?age=70</span><br><span class="line">else $age=10;</span><br><span class="line">switch(floor($age/10))&#123;</span><br><span class="line">	case 0:</span><br><span class="line">	case 1: echo &quot;child&quot;;break;</span><br><span class="line">	case 2:</span><br><span class="line">	case 3:</span><br><span class="line">	case 4: echo &quot;younger&quot;; break;</span><br><span class="line">	case 5:</span><br><span class="line">	case 6:</span><br><span class="line">	case 7: echo &quot;middle&quot;; break;</span><br><span class="line">	default:echo &quot;oder&quot;;</span><br><span class="line">&#125;</span><br><span class="line">echo &quot;&lt;hr&gt;&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdn.net/20180926232015178?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTA1NjgwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"></p>
+<ul>
+<li>初步了解什么是动态网站开发</li>
+<li>了解如何编写数据库查询功能</li>
+<li>数据库表设计创建</li>
+<li>PHP访问MySQL的函数</li>
+<li>HTML技术<br>创建表要有字段<br><img src="https://img-blog.csdn.net/20180926230805720?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTA1NjgwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"></li>
+</ul>
+<p>WAMPSERVER-server online<br>左键-phpMyAdmin<br><img src="https://img-blog.csdn.net/2018092623224590?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTA1NjgwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/18/php学习/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Hello-World" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
